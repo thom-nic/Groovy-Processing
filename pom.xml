@@ -1,0 +1,74 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.enernoc.rnd.gprocessing</groupId>
+  <artifactId>gprocessing</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>gprocessing</name>
+  <url>http://processing.org</url>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.processing</groupId>
+  		<artifactId>core</artifactId>
+  		<version>1.0.3</version>
+  	</dependency>
+		<dependency>
+			<groupId>org.codehaus.groovy</groupId>
+			<artifactId>groovy</artifactId>
+			<version>[1.5,)</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.ant</groupId>
+					<artifactId>ant</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>jline</groupId>
+					<artifactId>jline</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.5</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.groovy.maven</groupId>
+				<artifactId>gmaven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>build</id>
+						<goals>
+							<goal>generateStubs</goal>
+							<goal>compile</goal>
+							<goal>generateTestStubs</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+						<configuration>
+							<scriptpath>
+								<element>${pom.basedir}/src/scripts</element>
+							</scriptpath>
+							<source>import Sketch2
+							import processing.core.PGraphicsJava2D
+							Class.forName PGraphicsJava2D.class.name
+							Sketch2.main(null)</source>
+						</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
