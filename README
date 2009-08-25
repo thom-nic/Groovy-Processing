@@ -1,0 +1,1 @@
+Experimentation w/ Processing.org using Groovy.  Since Processing.org is just a set of Java classes plus a precompiler to make Processing a little easier to write, it can be done just as easily using Groovy.  I've added a Maven POM to make it super easy to run.  Try running the unit test(s).
